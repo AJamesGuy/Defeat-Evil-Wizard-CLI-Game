@@ -11,8 +11,6 @@ class Character:
     def attack(self, opponent):
         opponent.health -= self.attack_power
         print(f"{self.name} attacks {opponent.name} for {self.attack_power} damage!")
-        if opponent.health <= 0:
-            print(f"{opponent.name} has been defeated!")
         if isinstance(self, EvilWizard):
             self.attack_power = 15
 
