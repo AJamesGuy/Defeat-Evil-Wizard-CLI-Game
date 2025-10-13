@@ -12,7 +12,7 @@ class Character:
         opponent.health -= self.attack_power
         print(f"{self.name} attacks {opponent.name} for {self.attack_power} damage!")
         if isinstance(self, EvilWizard):
-            self.attack_power = 15
+            self.attack_power = random.randint(15, 30)
 
     def display_stats(self, opponent):
         print(f"{self.name}'s Stats - Health: {self.health}/{self.max_health}, Attack Power: {self.attack_power}")
@@ -47,14 +47,18 @@ class Mage(Character):
     
     def absord_health(self, opponent):
         damage = random.randint(10, 20)
-        self.health += damage
+        if self.max_health - self.health >= damage:
+            self.health += damage
+            print(f"{self.name} heals for {damage} points and inflicts {damage} damage on {opponent.name}")
+        else:
+            self.health = self.max_health
+            print(f"{self.name}'s health is full! {self.name} inflicts {damage} points of damage on {opponent.name}!")
         opponent.health -= damage
-        print(f"{self.name} heals for {damage} points and inflicts {damage} damage on {opponent.name}")
 
 # EvilWizard class (inherits from Character)
 class EvilWizard(Character):
     def __init__(self, name):
-        super().__init__(name, health=150, attack_power=15)
+        super().__init__(name, health=150, attack_power=random.randint(15, 30))
 
     def regenerate(self):
         if self.health <= self.max_health - 5:
