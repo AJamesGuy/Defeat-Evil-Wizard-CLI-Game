@@ -144,6 +144,7 @@ def battle(player, wizard):
         print("2. Use Special Ability")
         print("3. Heal")
         print("4. View Stats")
+        print("5. QUIT")
 
         choice = input("Choose an action: ")
 
@@ -189,6 +190,8 @@ def battle(player, wizard):
             player.heal()  # Implement heal method
         elif choice == '4':
             player.display_stats(wizard)
+        elif choice == '5':
+            break
         else:
             print("Invalid choice. Try again.")
 
