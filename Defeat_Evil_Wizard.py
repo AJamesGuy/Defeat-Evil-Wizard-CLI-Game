@@ -45,7 +45,7 @@ class Mage(Character):
         opponent.health -= self.attack_power + bonus
         print(f"{self.name} attacks {opponent.name} with a fireball for {self.attack_power + bonus} damage!")
     
-    def absord_health(self, opponent):
+    def absorb_health(self, opponent):
         damage = random.randint(10, 20)
         if self.max_health - self.health >= damage:
             self.health += damage
@@ -160,7 +160,7 @@ def battle(player, wizard):
                 if special == '1':
                     player.fireball(wizard)
                 elif special == '2':
-                    player.absord_health(wizard)
+                    player.absorb_health(wizard)
                 else:
                     print("Invalid choice. Try again.")
             elif isinstance(player, Archer):
